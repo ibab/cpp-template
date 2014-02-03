@@ -9,10 +9,27 @@ include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 find_package(Boost COMPONENTS program_options filesystem thread system random REQUIRED)
 find_package(ROOT REQUIRED)
 
-include_directories(include ${Boost_INCLUDE_DIR} ${ROOT_INCLUDE_DIR})
-set(LIBRARIES ${Boost_LIBRARIES} ${ROOT_LIBRARIES})
+# Add include directories
+include_directories(
+    ${Boost_INCLUDE_DIR}
+    ${ROOT_INCLUDE_DIR}
+    )
 
+# Add libraries
+set(LIBRARIES
+    ${Boost_LIBRARIES}
+    ${ROOT_LIBRARIES}
+    )
+
+# Enable/disable testing
+option(TESTS_ENABLED "Enable automatic tests" ON)
+if(TESTS_ENABLED)
+    add_subdirectory(test)
+endif()
+
+# Continue in src directory
 add_subdirectory(src)
+
 
 # vim:ft=cmake
 

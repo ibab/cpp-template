@@ -3,5 +3,10 @@
 #include "hello.h"
 
 void hello() {
-    std::cout << "Hello, World!" << std::endl;
+    std::string message = get_message();
+    std::cout << message << std::endl;
+}
+
+std::string get_message() {
+    return "Hellx, World!";
 }
