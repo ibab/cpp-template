@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 2.8)
 
 project({{project_name}})
+set(PROJECT_VERSION "0.0.0.0")
+set(PROJECT_BRIEF "\"A C++ CMake template\"")
 
 include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 
