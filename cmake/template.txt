@@ -1,0 +1,19 @@
+
+cmake_minimum_required(VERSION 2.8)
+
+project({{project_name}})
+
+include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
+
+# Add required packages
+find_package(Boost COMPONENTS program_options filesystem thread system random REQUIRED)
+find_package(ROOT REQUIRED)
+
+include_directories(include ${Boost_INCLUDE_DIR} ${ROOT_INCLUDE_DIR})
+set(LIBRARIES ${Boost_LIBRARIES} ${ROOT_LIBRARIES})
+
+add_subdirectory(src)
+
+# vim:ft=cmake
+
+
