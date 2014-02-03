@@ -59,4 +59,12 @@ Simply create new tests in the `test` directory.
 They will be automatically compiled into an executable.
 For an introduction to writing tests with googletest, follow [this link](http://code.google.com/p/googletest/wiki/Primer).
 
+### C++ 11
+
+C++ 11 is the newest released standard of the C++ programming language.
+It contains many useful syntax improvements (e.g. for each loop, lambda expressions) and an expanded standard library (e.g. improved random number generators).
+By default, this template will only work with C++11 capable compilers.
+You can relax this requirement by editing the file `cmake/Include.cmake`.
+
+
 
