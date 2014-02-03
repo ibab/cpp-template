@@ -19,6 +19,9 @@ and execute cmake from inside this directory:
     $ cmake ..
     $ make
 
+By default, your project will be compiled to both
+an executable and a library.
+
 You can add additional source files in
 `src/CMakeLists.txt` by modifying
 
