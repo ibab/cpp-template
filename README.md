@@ -52,7 +52,7 @@ If you have doxygen installed, simply execute
 in the build directory to create the documentation for your project.
 A tutorial on the doxygen syntax can be found [here](http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html).
 
-### GTest
+### googletest
 
 You can also make use of the googletest library to write and execute tests.
 Simply create new tests in the `test` directory.
