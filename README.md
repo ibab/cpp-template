@@ -19,11 +19,9 @@ and execute cmake from inside this directory:
     $ cmake ..
     $ make
 
-Finally, to add additional source files to your project,
-modify the line
+You can add additional source files in
+`src/CMakeLists.txt` by modifying
 
     set(SRC ...)
-
-in `src/CMakeLists.txt`.
 
 
