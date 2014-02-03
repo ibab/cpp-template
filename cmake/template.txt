@@ -7,21 +7,40 @@ set(PROJECT_BRIEF "\"A C++ CMake template\"")
 
 include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 
-# Add required packages
-find_package(Boost COMPONENTS program_options filesystem thread system random REQUIRED)
-find_package(ROOT REQUIRED)
+#
+# You can enable/disable the following libraries by uncommenting/commenting
+#
 
-# Add include directories
-include_directories(
-    ${Boost_INCLUDE_DIR}
-    ${ROOT_INCLUDE_DIR}
-    )
+# Boost, a collection of useful C++ utilities and idioms
+find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+set(LIBRARIES ${LIBRARIES} ${Boost_LIBRARIES})
 
-# Add libraries
-set(LIBRARIES
-    ${Boost_LIBRARIES}
-    ${ROOT_LIBRARIES}
-    )
+# Eigen3, a template library for high performance linear algebra
+#find_package(Eigen3 REQUIRED)
+#include_directories(EIGEN3_INCLUDE_DIR)
+
+# ROOT, a library for HEP data analysis (contains RooFit)
+#find_package(ROOT REQUIRED)
+#include_directories(${ROOT_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${ROOT_LIBRARIES})
+
+# Basic 3D graphics libraries: OpenGL, glew, glfw
+#find_package(OpenGL REQUIRED)
+#include_directories(${OPENGL_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${OPENGL_LIBRARIES})
+#find_package(GLEW REQUIRED)
+#include_directories(${GLEW_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${GLEW_LIBRARIES})
+#find_package(glfw REQUIRED)
+#include_directories(${GLFW_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${GLFW_LIBRARY})
+
+# protobuf, an efficient data serialization protocol
+#find_package(Protobuf REQUIRED)
+#include_directories(${PROTOBUF_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${PROTOBUF_LIBRARY})
+
 
 # Enable/disable testing
 option(TESTS_ENABLED "Enable automatic tests" ON)
