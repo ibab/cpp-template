@@ -7,8 +7,9 @@ set(TARGET {{project_name}})
 set(GTEST_TARGET ${TARGET}_test)
 file(GLOB_RECURSE TESTS_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
 
-add_executable(${GTEST_TARGET} ${TESTS_FILES} ../src/hello.cpp)
+add_executable(${GTEST_TARGET} ${TESTS_FILES})
 target_link_libraries(${GTEST_TARGET}
+    _${TARGET}
     ${GTEST_BOTH_LIBRARIES}
     ${LIBRARIES}
 )
