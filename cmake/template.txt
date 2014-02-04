@@ -7,12 +7,22 @@ set(PROJECT_BRIEF "\"{{project_brief}}\"")
 
 include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 
+if (NOT CMAKE_BUILD_TYPE)
+    message(STATUS "No build type selected, defaulting to Debug")
+    set(CMAKE_BUILD_TYPE "Debug")
+endif()
+
 #
-# You can enable/disable the following libraries by uncommenting/commenting
+# Simply enable the following libraries by uncommenting them
 #
 
 # Boost, a collection of useful C++ utilities and idioms
-#find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
+#find_package(Boost COMPONENTS
+#    program_options
+#    filesystem
+#    thread
+#    system
+#    REQUIRED)
 #include_directories(${Boost_INCLUDE_DIR})
 #set(LIBRARIES ${LIBRARIES} ${Boost_LIBRARIES})
 
@@ -20,6 +30,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 #find_package(ROOT REQUIRED)
 #include_directories(${ROOT_INCLUDE_DIR})
 #set(LIBRARIES ${LIBRARIES} ${ROOT_LIBRARIES})
+#set(LIBRARIES ${LIBRARIES} ${ROOFIT_LIBRARIES})
  
 # Eigen3, a template library for high performance linear algebra
 #find_package(Eigen3 REQUIRED)
@@ -55,7 +66,5 @@ endif()
 # Continue in src directory
 add_subdirectory(src)
 
-
 # vim:ft=cmake
-
 
