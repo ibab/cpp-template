@@ -40,8 +40,18 @@ def query_yes_no(question, default="yes"):
             sys.stdout.write("Please respond with 'yes' or 'no' "\
                              "(or 'y' or 'n').\n")
 
-name = input("Please enter a name for your project: ")
-use_git = query_yes_no("Do you want to initialize git?")
+name = input("Please enter a name for your project [default]: ")
+version = input("Please enter an initial version [0.0.0.0]: ")
+brief = input("Please enter a description [No description]: ")
+
+if not name.strip():
+    name = "default"
+if not version.strip():
+    version = "0.0.0.0"
+if not brief.strip():
+    brief = "No description"
+
+use_git = query_yes_no("Do you want to initialize git?", default="no")
 git_url = ""
 if use_git:
     git_url = input("Please enter the url of your git repository: ").strip()
@@ -56,13 +66,14 @@ def template(name, target, **kwargs):
     f.write(text)
     f.close()
 
-if name.strip():
-    print('Creating CMake files...')
-    template('cmake/template.txt', 'CMakeLists.txt', project_name=name)
-    template('cmake/template_src.txt', 'src/CMakeLists.txt', project_name=name)
-    template('cmake/template_test.txt', 'test/CMakeLists.txt', project_name=name)
+kwargs = dict(project_name = name, project_version=version, project_brief=brief)
 
-if git_url:
+print('Creating CMake files...')
+template('cmake/template.txt', 'CMakeLists.txt', **kwargs)
+template('cmake/template_src.txt', 'src/CMakeLists.txt', **kwargs)
+template('cmake/template_test.txt', 'test/CMakeLists.txt', **kwargs)
+
+if git_url.strip():
     print('Initializing git...')
     os.system('git remote rm origin > /dev/null 2>&1 || git init > /dev/null 2>&1')
     os.system('git remote add origin ' + git_url)

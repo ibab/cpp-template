@@ -2,8 +2,8 @@
 cmake_minimum_required(VERSION 2.8)
 
 project({{project_name}})
-set(PROJECT_VERSION "0.0.0.0")
-set(PROJECT_BRIEF "\"A C++ CMake template\"")
+set(PROJECT_VERSION {{project_version}})
+set(PROJECT_BRIEF "\"{{project_brief}}\"")
 
 include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 
@@ -12,14 +12,14 @@ include(${CMAKE_SOURCE_DIR}/cmake/Include.cmake)
 #
 
 # Boost, a collection of useful C++ utilities and idioms
-find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
-include_directories(${Boost_INCLUDE_DIR})
-set(LIBRARIES ${LIBRARIES} ${Boost_LIBRARIES})
+#find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
+#include_directories(${Boost_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${Boost_LIBRARIES})
 
 # ROOT, a library for HEP data analysis (contains RooFit)
-find_package(ROOT REQUIRED)
-include_directories(${ROOT_INCLUDE_DIR})
-set(LIBRARIES ${LIBRARIES} ${ROOT_LIBRARIES})
+#find_package(ROOT REQUIRED)
+#include_directories(${ROOT_INCLUDE_DIR})
+#set(LIBRARIES ${LIBRARIES} ${ROOT_LIBRARIES})
  
 # Eigen3, a template library for high performance linear algebra
 #find_package(Eigen3 REQUIRED)
