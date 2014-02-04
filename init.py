@@ -56,8 +56,8 @@ def template(name, target, **kwargs):
     f.write(text)
     f.close()
 
-print('Creating CMake files...')
 if name.strip():
+    print('Creating CMake files...')
     template('cmake/template.txt', 'CMakeLists.txt', project_name=name)
     template('cmake/template_src.txt', 'src/CMakeLists.txt', project_name=name)
     template('cmake/template_test.txt', 'test/CMakeLists.txt', project_name=name)
