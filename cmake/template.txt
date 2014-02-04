@@ -16,14 +16,14 @@ find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 set(LIBRARIES ${LIBRARIES} ${Boost_LIBRARIES})
 
+# ROOT, a library for HEP data analysis (contains RooFit)
+find_package(ROOT REQUIRED)
+include_directories(${ROOT_INCLUDE_DIR})
+set(LIBRARIES ${LIBRARIES} ${ROOT_LIBRARIES})
+ 
 # Eigen3, a template library for high performance linear algebra
 #find_package(Eigen3 REQUIRED)
 #include_directories(EIGEN3_INCLUDE_DIR)
-
-# ROOT, a library for HEP data analysis (contains RooFit)
-#find_package(ROOT REQUIRED)
-#include_directories(${ROOT_INCLUDE_DIR})
-#set(LIBRARIES ${LIBRARIES} ${ROOT_LIBRARIES})
 
 # Basic 3D graphics libraries: OpenGL, glew, glfw
 #find_package(OpenGL REQUIRED)
@@ -41,9 +41,13 @@ set(LIBRARIES ${LIBRARIES} ${Boost_LIBRARIES})
 #include_directories(${PROTOBUF_INCLUDE_DIR})
 #set(LIBRARIES ${LIBRARIES} ${PROTOBUF_LIBRARY})
 
+# glog, a powerful logging framework
+#find_package(Glog REQUIRED)
+#include_directories(${GLOG_INCLUDE_DIRS})
+#set(LIBRARIES ${LIBRARIES} ${GLOG_LIBRARIES})
 
 # Enable/disable testing
-option(TESTS_ENABLED "Enable automatic tests" ON)
+option(TESTS_ENABLED "Enable automatic tests" OFF)
 if(TESTS_ENABLED)
     add_subdirectory(test)
 endif()
