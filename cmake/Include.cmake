@@ -7,9 +7,9 @@ set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
 
 # Compiler settings
 #set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_CXX_FLAGS_DEBUG "-Wall -O0 -ggdb -std=c++11")
-set(CMAKE_CXX_FLAGS_RELEASE "-Wall -O2 -std=c++11")
-set(CMAKE_CXX_FLAGS_PROFILING "-Wall -O2 -std=c++11")
+set(CMAKE_CXX_FLAGS_DEBUG "-Wall -O0 -ggdb")
+set(CMAKE_CXX_FLAGS_RELEASE "-Wall -O2")
+set(CMAKE_CXX_FLAGS_PROFILING "-Wall -O2")
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
