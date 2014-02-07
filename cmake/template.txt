@@ -58,7 +58,7 @@ endif()
 #set(LIBRARIES ${LIBRARIES} ${GLOG_LIBRARIES})
 
 # Enable/disable testing
-option(TESTS_ENABLED "Enable automatic tests" OFF)
+option(TESTS_ENABLED "Enable automatic tests" ON)
 if(TESTS_ENABLED)
     add_subdirectory(test)
 endif()
