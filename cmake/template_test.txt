@@ -46,7 +46,7 @@ if(CMAKE_COMPILER_IS_GNUC OR CMAKE_COMPILER_IS_GNUCXX)
     target_link_libraries(${GTEST_TARGET} pthread)
 endif()
 
-add_custom_target(check COMMAND ${EXECUTABLE_OUTPUT_PATH}/${GTEST_TARGET} --output="xml:tests.xml")
+add_custom_target(check COMMAND ${EXECUTABLE_OUTPUT_PATH}/${GTEST_TARGET} --gtest_output="xml:${CMAKE_BINARY_DIR}/tests.xml" || true)
 add_dependencies(check ${GTEST_TARGET})
 
 # vim:ft=cmake
