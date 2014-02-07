@@ -19,6 +19,9 @@ ExternalProject_Add(
     LOG_CONFIGURE ON
     LOG_BUILD ON)
 
+ExternalProject_Get_Property(googletest source_dir)
+include_directories(${source_dir}/include)
+
 set_target_properties(googletest PROPERTIES EXCLUDE_FROM_ALL TRUE)
 ExternalProject_Get_Property(googletest binary_dir)
 if(MSVC)
