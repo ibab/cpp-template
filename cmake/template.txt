@@ -59,6 +59,10 @@ endif()
 
 # Enable/disable testing
 option(TESTS_ENABLED "Enable automatic tests" ON)
+
+# Enable/disable test coverage
+option(COVERAGE_ENABLED "Enable test coverage" ON)
+
 if(TESTS_ENABLED)
     add_subdirectory(test)
 endif()

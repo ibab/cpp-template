@@ -7,9 +7,9 @@ set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
 
 # Compiler settings
 #set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_CXX_FLAGS_DEBUG "-Wall -O0 -ggdb")
-set(CMAKE_CXX_FLAGS_RELEASE "-Wall -O2")
-set(CMAKE_CXX_FLAGS_PROFILING "-Wall -O2")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fPIC -O0 -ggdb -fprofile-arcs -ftest-coverage -fPIC")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
+set(CMAKE_CXX_FLAGS_PROFILING "${CMAKE_CXX_FLAGS_PROFILING} -Wall -O2")
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -25,7 +25,6 @@ endif()
 #
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-include(CPack)
 
 find_package(Doxygen)
 if(DOXYGEN_FOUND)

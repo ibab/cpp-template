@@ -49,5 +49,12 @@ endif()
 add_custom_target(check COMMAND ${EXECUTABLE_OUTPUT_PATH}/${GTEST_TARGET} --gtest_output="xml:${CMAKE_BINARY_DIR}/tests.xml" || true)
 add_dependencies(check ${GTEST_TARGET})
 
+if(COVERAGE_ENABLED)
+    find_package(gcovr REQUIRED)
+    target_link_libraries(${GTEST_TARGET} -lgcov)
+    add_custom_target(coverage WORKING_DIRECTORY ${CMAKE_BINARY_DIR} COMMAND ${GCOVR_EXECUTABLE} -r ../src --xml-pretty -o ${CMAKE_BINARY_DIR}/coverage.xml)
+    add_dependencies(coverage check)
+endif()
+
 # vim:ft=cmake
 
