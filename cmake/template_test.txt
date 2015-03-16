@@ -1,6 +1,6 @@
 include(ExternalProject)
 
-set(TARGET {{project_name}})
+set(TARGET {{project_name}}-lib)
 set(GTEST_TARGET ${TARGET}_test)
 file(GLOB_RECURSE TESTS_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
 

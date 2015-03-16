@@ -9,6 +9,9 @@ void hello() {
 }
 
 std::string get_message() {
+    // There's a mistake here
+    // Try running `make check` and observe the failing test case
+    // Then correct the line below and repeat
     return "Hellx, World!";
 }
 

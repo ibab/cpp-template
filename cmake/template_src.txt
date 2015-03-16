@@ -1,15 +1,17 @@
 
 # Specify .cpp files
+set(TARGET_NAME {{project_name}})
 set(SRC hello.cpp)
 
-# Specify the executable
-add_executable({{project_name}}-bin main.cpp ${SRC})
-target_link_libraries({{project_name}}-bin ${LIBRARIES})
-set_target_properties({{project_name}}-bin PROPERTIES OUTPUT_NAME {{project_name}})
+# Build an executable from main.cpp and all specified source files
+add_executable(${TARGET_NAME} main.cpp ${SRC})
+target_link_libraries(${TARGET_NAME} ${LIBRARIES})
 
-# Build a library
-add_library({{project_name}} ${SRC})
-target_link_libraries({{project_name}} ${LIBRARIES})
+# Build a library from all specified source files
+# This is required for using googletest
+add_library(${TARGET_NAME}-lib ${SRC})
+target_link_libraries(${TARGET_NAME}-lib ${LIBRARIES})
+set_target_properties(${TARGET_NAME}-lib PROPERTIES OUTPUT_NAME {{project_name}})
 
 # vim:ft=cmake
 
