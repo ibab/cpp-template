@@ -51,11 +51,6 @@ if not version.strip():
 if not brief.strip():
     brief = "No description"
 
-use_git = query_yes_no("Do you want to initialize git?", default="no")
-git_url = ""
-if use_git:
-    git_url = input("Please enter the url of your git repository: ").strip()
-
 def template(name, target, **kwargs):
     f = open(name)
     text = f.read()
@@ -72,9 +67,4 @@ print('Creating CMake files...')
 template('cmake/template.txt', 'CMakeLists.txt', **kwargs)
 template('cmake/template_src.txt', 'src/CMakeLists.txt', **kwargs)
 template('cmake/template_test.txt', 'test/CMakeLists.txt', **kwargs)
-
-if git_url.strip():
-    print('Initializing git...')
-    os.system('git remote rm origin > /dev/null 2>&1 || git init > /dev/null 2>&1')
-    os.system('git remote add origin ' + git_url)
 
